@@ -1,18 +1,19 @@
-import React, { useState } from 'react'
+import * as React from 'react'
+import { useState } from 'react'
 
 import { AppContainer, PlayersDescription, Player1, Player2 } from './App.styles'
 
 import Board from './components/board/board.component'
 import RestartButton from './components/restart-button/restart-button.component'
 import GameStateBar from './components/game-state-bar/game-state-bar.component'
-import { playerCell, aiCell } from './utils/constants'
+import { GameState, playerCell, aiCell, CellValue } from './utils/constants'
 
-const App = () => {
-  const [cells, setCells] = useState(
+const App = (): JSX.Element => {
+  const [cells, setCells] = useState<CellValue[]>(
     Array.apply(null, Array(9)).map(() => '')
   )
-  const [gameState, setGameState] = useState('')
-  const [isPlayerTurn, setIsPlayerTurn] = useState(Math.random() < 0.5)
+  const [gameState, setGameState] = useState<GameState>('')
+  const [isPlayerTurn, setIsPlayerTurn] = useState<boolean>(Math.random() < 0.5)
 
   const handleRestartBtnClick = () => {
     setIsPlayerTurn(Math.random() < 0.5)

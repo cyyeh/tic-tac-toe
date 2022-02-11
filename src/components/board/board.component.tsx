@@ -1,4 +1,5 @@
-import React, { useEffect } from 'react'
+import * as React from 'react'
+import { useEffect } from 'react'
 
 import {
   BoardDiv
@@ -6,7 +7,7 @@ import {
 
 import Cell from '../cell/cell.component'
 import {
-  playerCell, aiCell
+  playerCell, aiCell, GameState, CellValue
 } from '../../utils/constants'
 
 const Board = ({
@@ -16,7 +17,7 @@ const Board = ({
   onGameStateChange,
   onCellsChange,
   onPlayerTurnChange
-}) => {
+}): JSX.Element => {
   useEffect(() => {
     if (!isPlayerTurn && gameState === '') {
       // AI make a random move following player's move
@@ -26,27 +27,32 @@ const Board = ({
     }
   }, [cells, gameState])
 
-  const findAllEmptyCells = (cells) => {
+  const findAllEmptyCells = (cells: CellValue[]): number[] => {
     return cells.map((v, i) => v === '' ? i : -1).filter(v => v !== -1)
   }
 
   // check if 3 cells have same non-empty val - return the winner state; otherwise undefined
-  const check3Cells = (cells, pos0, pos1, pos2) => {
+  const check3Cells = (
+    cells: CellValue[],
+    pos0: number,
+    pos1: number,
+    pos2: number
+  ): GameState => {
     if (cells[pos0] === cells[pos1] &&
         cells[pos1] === cells[pos2] &&
         cells[pos0] !== '') {
       if (cells[pos0] === 'X') {
-        return 'X wins'
+        return 'X Wins!'
       }
 
-      return 'O wins'
+      return 'O Wins!'
     }
 
-    return undefined
+    return ''
   }
 
   // check the game state - use the latest move
-  const checkGameState = (cells, latestPos) => {
+  const checkGameState = (cells: CellValue[], latestPos: number): GameState => {
     if (gameState !== '') {
       return gameState
     }
@@ -90,7 +96,7 @@ const Board = ({
     return ''
   }
 
-  const move = (pos, val) => {
+  const move = (pos: number, val: CellValue) => {
     if (gameState === '' && cells[pos] === '') {
       let newCells = [...cells]
       newCells[pos] = val
@@ -101,11 +107,11 @@ const Board = ({
   }
 
   // handle a new move from player
-  const handleNewPlayerMove = (pos) => move(pos, playerCell)
+  const handleNewPlayerMove = (pos: number) => move(pos, playerCell)
 
   return (
     <BoardDiv>
-      {cells.map((v, i) => 
+      {cells.map((v: CellValue, i: number) => 
         <Cell
           key={i}
           pos={i}

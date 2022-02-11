@@ -1,11 +1,11 @@
-import React from 'react'
+import * as React from 'react'
 
 import {
   CellDiv
 } from './cell.styles'
 
 const Cell = ({ pos, val, handleMove }) => {
-  const posToClassName = (pos) => {
+  const posToClassName = (pos: number): string => {
     let className = 'cell'
     switch (Math.floor(pos / 3)) {
       case 0:

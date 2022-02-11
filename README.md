@@ -6,5 +6,5 @@ See [project demo site here](https://new-tic-tac-toe.netlify.app/)
 
 ## TODO
 
-- [ ] Change to TypeScript version
+- [x] Change to TypeScript version
 - [ ] Implement P2P functionality
