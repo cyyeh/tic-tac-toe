@@ -1,0 +1,19 @@
+{
+  "name": "tic-tac-toe",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "parcel src/index.html",
+    "build": "parcel build src/index.html",
+    "deploy": "yarn build && netlify deploy"
+  },
+  "dependencies": {
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "styled-components": "^5.3.3"
+  },
+  "devDependencies": {
+    "netlify-cli": "^9.3.0",
+    "parcel": "^2.3.1"
+  }
+}
