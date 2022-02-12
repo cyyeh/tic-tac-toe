@@ -25,7 +25,7 @@ const Board = ({
       let pos = emptyCells[Math.floor(Math.random() * emptyCells.length)]
       move(pos, aiCell)
     }
-  }, [cells, gameState])
+  }, [cells, gameState, isPlayerTurn])
 
   const findAllEmptyCells = (cells: CellValue[]): number[] => {
     return cells.map((v, i) => v === '' ? i : -1).filter(v => v !== -1)
@@ -116,7 +116,7 @@ const Board = ({
           key={i}
           pos={i}
           val={v}
-          handleMove={() => handleNewPlayerMove(i)}
+          handleMove={() => isPlayerTurn && handleNewPlayerMove(i)}
         />
       )}
     </BoardDiv>

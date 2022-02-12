@@ -3,22 +3,47 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "start": "react-scripts start",
     "dev": "parcel src/index.html",
     "build": "parcel build src/index.html",
     "deploy": "pnpm build && netlify deploy"
   },
   "dependencies": {
+    "@syncedstore/core": "latest",
+    "@syncedstore/react": "latest",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-is": "^17.0.2",
-    "styled-components": "^5.3.3"
+    "styled-components": "^5.3.3",
+    "uuid": "^8.3.2",
+    "y-webrtc": "latest",
+    "yjs": "latest"
   },
   "devDependencies": {
+    "@babel/core": ">=7.0.0-0 <8.0.0",
+    "@babel/plugin-syntax-flow": "^7.14.5",
+    "@babel/plugin-transform-react-jsx": "^7.14.9",
     "@types/react": "^17.0.39",
     "@types/react-dom": "^17.0.11",
     "@types/react-is": "^17.0.3",
     "@types/styled-components": "^5.1.22",
+    "autoprefixer": "^10.0.2",
     "netlify-cli": "^9.3.0",
-    "parcel": "^2.3.1"
+    "parcel": "^2.3.1",
+    "postcss": ">=8.3.11 <9.0.0",
+    "react-scripts": "^5.0.0",
+    "typescript": ">=3.2.1 <4.0.0 || >=4.0.0 <5.0.0"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
   }
 }
